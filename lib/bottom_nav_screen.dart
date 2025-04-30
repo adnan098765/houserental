@@ -2,11 +2,11 @@ import 'package:curved_labeled_gradient_navigation_bar/curved_navigation_bar.dar
 import 'package:curved_labeled_gradient_navigation_bar/curved_navigation_bar_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:zillow_rental/profile_screen.dart';
-import 'package:zillow_rental/property_listing_page.dart';
-import 'package:zillow_rental/top_location_screen.dart';
-import 'package:zillow_rental/booking_screen.dart';
-import 'package:zillow_rental/home.dart';
+import 'package:zillow_rental/Screens/ProfileScreen/profile_screen.dart';
+import 'package:zillow_rental/Screens/PropertyListingScreen/property_listing_page.dart';
+import 'package:zillow_rental/Screens/TopLocationScreen/top_location_screen.dart';
+import 'package:zillow_rental/Screens/BookingScreen/booking_screen.dart';
+import 'package:zillow_rental/Screens/HomeScreen/home.dart';
 import 'dart:math' as math;
 
 class BottomNavScreen extends StatefulWidget {

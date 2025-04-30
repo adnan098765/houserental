@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'detail_screen.dart';
+import '../Detail/screen/detail_screen.dart';
 
 class TopLocationsScreen extends StatefulWidget {
   const TopLocationsScreen({super.key});

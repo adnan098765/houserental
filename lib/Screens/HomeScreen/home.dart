@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:zillow_rental/detail_screen.dart';
-import 'package:zillow_rental/top_location_screen.dart';
-import 'all_categories_screeen.dart';
+import 'package:zillow_rental/Screens/Detail/screen/detail_screen.dart';
+import 'package:zillow_rental/Screens/TopLocationScreen/top_location_screen.dart';
+import '../AllCategoriesScreen/all_categories_screeen.dart';
 
 class HomeScreen extends StatelessWidget {
   final List<Map<String, dynamic>> recommended = [

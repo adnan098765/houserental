@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'detail_screen.dart';
-import 'home.dart';
+import '../Detail/screen/detail_screen.dart';
+import '../HomeScreen/home.dart';
 
 class PropertyListingPage extends StatefulWidget {
   const PropertyListingPage({super.key});
