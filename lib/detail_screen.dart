@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zillow_rental/AppColors/app_colors.dart';
 
 class CategoryDetailScreen extends StatefulWidget {
   final Map<String, dynamic> category;
@@ -54,7 +55,7 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
                     fontWeight: FontWeight.bold,
                     shadows: [
                       Shadow(
-                        blurRadius: 10.0,
+                        blurRadius: 3.0,
                         color: Colors.black54,
                         offset: Offset(2.0, 2.0),
                       ),
@@ -65,41 +66,43 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
               titlePadding: const EdgeInsets.only(left: 16, bottom: 16),
               collapseMode: CollapseMode.pin,
             ),
-            leading: IconButton(
-              icon: const CircleAvatar(
-                backgroundColor: Colors.white54,
-                radius: 15,
-                child: Icon(Icons.arrow_back, color: Colors.black87),
-              ),
-              onPressed: () => Navigator.pop(context),
-            ),
-            actions: [
-              IconButton(
-                icon: const CircleAvatar(
-                  backgroundColor: Colors.white54,
-                  radius: 15,
-                  child: Icon(Icons.favorite_border, color: Colors.black87),
-                ),
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Added to favorites')),
-                  );
-                },
-              ),
-              IconButton(
-                icon: const CircleAvatar(
-                  backgroundColor: Colors.white54,
-                  radius: 15,
-                  child: Icon(Icons.share, color: Colors.black87),
-                ),
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Share link copied')),
-                  );
-                },
-              ),
-              const SizedBox(width: 8),
-            ],
+            automaticallyImplyLeading: false,
+            backgroundColor: AppColors.whiteTheme,
+            // leading: IconButton(
+            //   icon: const CircleAvatar(
+            //     backgroundColor: Colors.white54,
+            //     radius: 15,
+            //     child: Icon(Icons.arrow_back, color: Colors.black87),
+            //   ),
+            //   onPressed: () => Navigator.pop(context),
+            // ),
+            // actions: [
+            //   IconButton(
+            //     icon: const CircleAvatar(
+            //       backgroundColor: Colors.white54,
+            //       radius: 15,
+            //       child: Icon(Icons.favorite_border, color: Colors.black87),
+            //     ),
+            //     onPressed: () {
+            //       ScaffoldMessenger.of(context).showSnackBar(
+            //         const SnackBar(content: Text('Added to favorites')),
+            //       );
+            //     },
+            //   ),
+            //   IconButton(
+            //     icon: const CircleAvatar(
+            //       backgroundColor: Colors.white54,
+            //       radius: 15,
+            //       child: Icon(Icons.share, color: Colors.black87),
+            //     ),
+            //     onPressed: () {
+            //       ScaffoldMessenger.of(context).showSnackBar(
+            //         const SnackBar(content: Text('Share link copied')),
+            //       );
+            //     },
+            //   ),
+            //   const SizedBox(width: 8),
+            // ],
           ),
           // Content
           SliverToBoxAdapter(
@@ -512,19 +515,19 @@ class _CategoryDetailScreenState extends State<CategoryDetailScreen> {
             _buildContactItem(
               icon: Icons.phone,
               title: 'Phone',
-              value: '+1 (555) 123-4567',
+              value: '03260483582',
               onTap: () {},
             ),
             _buildContactItem(
               icon: Icons.email,
               title: 'Email',
-              value: 'contact@example.com',
+              value: 'adnan804@example.com',
               onTap: () {},
             ),
             _buildContactItem(
               icon: Icons.language,
               title: 'Website',
-              value: 'www.example.com',
+              value: 'https.houserental.com',
               onTap: () {},
             ),
             _buildContactItem(

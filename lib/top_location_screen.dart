@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'detail_screen.dart';
+
 class TopLocationsScreen extends StatefulWidget {
   const TopLocationsScreen({super.key});
 
@@ -8,7 +10,7 @@ class TopLocationsScreen extends StatefulWidget {
 }
 
 class _TopLocationsScreenState extends State<TopLocationsScreen> {
-  String selectedCity = "Multan";  // Fixed typo from "<u;tan>"
+  String selectedCity = "Multan";
   String selectedPriceRange = "10k - 15k";
 
   final List<String> cities = ["Multan", "Lahore", "Islambad"];
@@ -23,6 +25,8 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
       "price": 14000,
       "rating": 4.6,
       "city": "Multan",
+      "id": "multan-villa-1",
+      "description": "Experience this beautiful villa with breathtaking views and excellent service. Perfect for families looking for quality and value."
     },
     {
       "image": "assets/images/image.png",
@@ -31,6 +35,8 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
       "price": 12500,
       "rating": 4.3,
       "city": "Multan",
+      "id": "multan-heights-1",
+      "description": "Modern living with garden views in the heart of Multan. All amenities included with excellent security."
     },
     {
       "image": "assets/images/image.png",
@@ -39,6 +45,8 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
       "price": 22000,
       "rating": 4.9,
       "city": "Multan",
+      "id": "multan-lake-1",
+      "description": "Luxurious mansion overlooking the lake with premium finishes and spacious rooms. Perfect for upscale living."
     },
     {
       "image": "assets/images/image.png",
@@ -47,6 +55,8 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
       "price": 18000,
       "rating": 4.7,
       "city": "Multan",
+      "id": "multan-sunrise-1",
+      "description": "Modern apartments with sunrise views and all the amenities you need for comfortable living."
     },
 
     // Lahore Properties
@@ -57,6 +67,8 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
       "price": 17000,
       "rating": 4.4,
       "city": "Lahore",
+      "id": "lahore-acorn-1",
+      "description": "Beautiful villa located in the prestigious Johar Town area with easy access to shopping and entertainment."
     },
     {
       "image": "assets/images/image.png",
@@ -65,6 +77,8 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
       "price": 21000,
       "rating": 4.5,
       "city": "Lahore",
+      "id": "lahore-urban-1",
+      "description": "Premium apartment in DHA Phase 5 with beautiful views and modern amenities for comfortable living."
     },
     {
       "image": "assets/images/image.png",
@@ -73,6 +87,8 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
       "price": 13500,
       "rating": 4.2,
       "city": "Lahore",
+      "id": "lahore-modern-1",
+      "description": "Contemporary living spaces in the heart of Gulberg, offering convenience and style at an affordable price."
     },
     {
       "image": "assets/images/image.png",
@@ -81,6 +97,8 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
       "price": 24000,
       "rating": 4.8,
       "city": "Lahore",
+      "id": "lahore-executive-1",
+      "description": "Luxury executive suites in Model Town with premium amenities and excellent security for discerning professionals."
     },
 
     // Islamabad Properties
@@ -91,6 +109,8 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
       "price": 20000,
       "rating": 4.8,
       "city": "Islambad",
+      "id": "islamabad-orchard-1",
+      "description": "Beautiful property surrounded by nature in the heart of F-8 Markaz with modern amenities and secure environment."
     },
     {
       "image": "assets/images/image.png",
@@ -99,6 +119,8 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
       "price": 24500,
       "rating": 4.9,
       "city": "Islambad",
+      "id": "islamabad-capital-1",
+      "description": "Premium apartments with stunning views of the capital city, offering luxury living in a prime location."
     },
     {
       "image": "assets/images/image.png",
@@ -107,6 +129,8 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
       "price": 19500,
       "rating": 4.7,
       "city": "Islambad",
+      "id": "islamabad-margalla-1",
+      "description": "Elegant residency with views of the Margalla Hills, offering premium living with all modern amenities."
     },
     {
       "image": "assets/images/image.png",
@@ -115,6 +139,8 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
       "price": 15000,
       "rating": 4.4,
       "city": "Islambad",
+      "id": "islamabad-blue-1",
+      "description": "Centrally located apartments in Blue Area with easy access to business districts and shopping areas."
     },
 
     // Other properties
@@ -125,6 +151,8 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
       "price": 18000,
       "rating": 4.5,
       "city": "Hydrabad",
+      "id": "hyderabad-tech-1",
+      "description": "Modern living spaces near Tech Park with all amenities for comfortable family living."
     },
     {
       "image": "assets/images/image.png",
@@ -133,6 +161,8 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
       "price": 16500,
       "rating": 4.6,
       "city": "Bahawalpur",
+      "id": "bahawalpur-royal-1",
+      "description": "Royal living experience in the heart of Bahawalpur with premium amenities and excellent service."
     },
   ];
 
@@ -190,7 +220,6 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
             SizedBox(
               height: 50,
               child: ListView.builder(
-
                 scrollDirection: Axis.horizontal,
                 itemCount: cities.length,
                 itemBuilder: (context, index) {
@@ -268,20 +297,39 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
                     child: InkWell(
                       borderRadius: BorderRadius.circular(12),
                       onTap: () {
-                        // Handle property tap
+                        // Navigate to detail screen with the property data
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CategoryDetailScreen(
+                              category: {
+                                'id': property["id"],
+                                'title': property["title"],
+                                'image': property["image"],
+                                'location': property["location"],
+                                'price': "Rs${property["price"]}/month",
+                                'rating': property["rating"],
+                                'description': property["description"],
+                              },
+                            ),
+                          ),
+                        );
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: Row(
                           children: [
                             // Property Image
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.asset(
-                                property["image"],
-                                width: 100,
-                                height: 100,
-                                fit: BoxFit.cover,
+                            Hero(
+                              tag: 'category-${property["id"]}',
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(8),
+                                child: Image.asset(
+                                  property["image"],
+                                  width: 100,
+                                  height: 100,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                             const SizedBox(width: 12),

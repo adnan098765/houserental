@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'detail_screen.dart';
 import 'home.dart';
 
 class PropertyListingPage extends StatefulWidget {
@@ -71,7 +72,7 @@ class _PropertyListingPageState extends State<PropertyListingPage> {
                     },
                   ),
                 ),
-                 SizedBox(width: width*0.010),
+                SizedBox(width: width * 0.010),
                 Expanded(
                   child: ChoiceChip(
                     label: const Text('For Rent'),
@@ -134,7 +135,7 @@ class _PropertyListingPageState extends State<PropertyListingPage> {
                       'Filters',
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
-                     SizedBox(height: height*0.016),
+                    SizedBox(height: height * 0.016),
                     // Price Range
                     const Align(
                       alignment: Alignment.centerLeft,
@@ -167,7 +168,7 @@ class _PropertyListingPageState extends State<PropertyListingPage> {
                       ),
                     ),
                     // Bedrooms
-                     SizedBox(height:height*0.016),
+                    SizedBox(height: height * 0.016),
                     const Align(
                       alignment: Alignment.centerLeft,
                       child: Text('Bedrooms'),
@@ -183,7 +184,7 @@ class _PropertyListingPageState extends State<PropertyListingPage> {
                         );
                       }),
                     ),
-                     SizedBox(height: height*0.016),
+                    SizedBox(height: height * 0.016),
                     ElevatedButton(
                       onPressed: () {
                         // Apply the filters to main state
@@ -219,7 +220,23 @@ class PropertyCard extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
         onTap: () {
-          // Navigate to property details
+          // Convert Property to Map for CategoryDetailScreen
+          final propertyData = {
+            'id': property.id,
+            'title': property.title,
+            'location': property.location,
+            'price': 'Rs ${property.price.toStringAsFixed(0)}',
+            'image': property.imageUrl,
+            'rating': 4.5, // Default rating
+            'description': 'Beautiful ${property.bedrooms} bedroom property with ${property.bathrooms} bathrooms and ${property.area} sq.ft of living space. Located in ${property.location}.'
+          };
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CategoryDetailScreen(category: propertyData),
+            ),
+          );
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -231,7 +248,7 @@ class PropertyCard extends StatelessWidget {
               ),
               child: Image.asset(
                 property.imageUrl,
-                height: height*0.250,
+                height: height * 0.250,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
@@ -274,11 +291,11 @@ class PropertyCard extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                   SizedBox(height: height*0.006),
+                  SizedBox(height: height * 0.006),
                   Row(
                     children: [
                       const Icon(Icons.location_on, size: 16),
-                       SizedBox(width: 4),
+                      const SizedBox(width: 4),
                       Text(
                         property.location,
                         style: TextStyle(fontSize: 14, color: Colors.grey[600]),
@@ -287,7 +304,7 @@ class PropertyCard extends StatelessWidget {
                   ),
 
                   // Features
-                   SizedBox(height:height *0.010),
+                  SizedBox(height: height * 0.010),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -347,7 +364,7 @@ List<Property> forSaleProperties = [
   Property(
     id: '1',
     title: 'Modern Apartment in City Center',
-    location: 'Multan Housing society',
+    location: 'Multan Housing Society',
     price: 7500000,
     imageUrl: 'assets/images/image.png', // Changed to asset image
     bedrooms: 3,

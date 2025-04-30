@@ -5,13 +5,81 @@ import 'detail_screen.dart';
 class AllCategoriesScreen extends StatelessWidget {
   AllCategoriesScreen({super.key});
 
-  final List<Map<String, dynamic>> categories = List.generate(25, (index) {
+  // List of Pakistani cities
+  final List<String> pakistaniCities = [
+    'Lahore', 'Karachi', 'Islamabad', 'Rawalpindi', 'Multan',
+    'Faisalabad', 'Peshawar', 'Quetta', 'Sialkot', 'Gujranwala',
+    'Hyderabad', 'Bahawalpur', 'Sukkur', 'Muzaffarabad', 'Mirpur',
+    'Abbottabad', 'Gwadar', 'Sargodha', 'Sahiwal', 'Larkana',
+  ];
+
+  // List of Pakistani property developments and areas
+  final List<String> developments = [
+    'Bahria Town', 'DHA Phase', 'Gulberg', 'Model Town', 'Johar Town',
+    'Askari', 'Cantt Area', 'Eden Gardens', 'Park View', 'Al-Kabir Town',
+    'Wapda Town', 'Navy Housing', 'Clifton', 'Satellite Town', 'Lake City',
+    'Royal Residencia', 'Fazaia Housing', 'Gulshan-e-Iqbal', 'F-10 Sector', 'E-11 Sector',
+  ];
+
+  // List of property types
+  final List<String> propertyTypes = [
+    'House', 'Apartment', 'Villa', 'Penthouse', 'Bungalow',
+    'Flat', 'Studio', '', 'Townhouse', 'Cottage',
+  ];
+
+  late final List<Map<String, dynamic>> categories = List.generate(25, (index) {
+    // Get random city and area
+    final city = pakistaniCities[index % pakistaniCities.length];
+    final development = developments[index % developments.length];
+    final propertyType = propertyTypes[index % propertyTypes.length];
+
+    // Generate property name based on location
+    final propertyName = '${development} ${propertyType}';
+
+    // Generate price (different ranges based on property type)
+    int basePrice = 0;
+    switch (propertyType) {
+      case 'Penthouse':
+      case 'Villa':
+      case 'Bungalow':
+        basePrice = 15000000 + (index * 500000);
+        break;
+      case 'House':
+      case 'Farmhouse':
+        basePrice = 8000000 + (index * 300000);
+        break;
+      case 'Apartment':
+      case 'Townhouse':
+        basePrice = 5000000 + (index * 200000);
+        break;
+      case 'Flat':
+      case 'Studio':
+      case 'Cottage':
+        basePrice = 2500000 + (index * 150000);
+        break;
+      default:
+        basePrice = 4000000 + (index * 250000);
+    }
+
+    final formattedPrice = basePrice.toString().replaceAllMapped(
+        RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+            (Match m) => '${m[1]},'
+    );
+
+    // Generate rating based on property type and index
+    double rating = 3.5 + ((index % 3) * 0.5);
+    if (propertyType == 'Penthouse' || propertyType == 'Villa' || propertyType == 'Bungalow') {
+      rating = 4.5;
+    }
+
     return {
+      'id': 'property_$index',
       'image': 'assets/images/image.png',
-      'title': 'Category ${index + 1}',
-      'location': 'City ${index + 1}',
-      'price': 'Rs ${(20000 + index * 500).toString()}',
-      'rating': (4.0 + (index % 5) * 0.1).toStringAsFixed(1),
+      'title': propertyName,
+      'location': city,
+      'price': 'Rs $formattedPrice',
+      'rating': rating.toStringAsFixed(1),
+      'description': 'Luxurious $propertyType located in $development, $city. This property offers modern amenities, beautiful interiors and is close to all major facilities.',
     };
   });
 
@@ -21,7 +89,7 @@ class AllCategoriesScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('All Categories'),
+        title: const Text('All Properties'),
         backgroundColor: Colors.deepPurple,
       ),
       body: ListView.builder(
