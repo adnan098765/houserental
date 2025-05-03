@@ -38,6 +38,8 @@ dependencies:
   get: ^4.7.2
   image_picker: ^1.1.2
   google_fonts:
+  country_picker: ^2.0.27
+  flutter_localization: ^0.3.2
   curved_labeled_gradient_navigation_bar: ^2.0.13
 
 
