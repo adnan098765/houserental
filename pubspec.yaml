@@ -40,8 +40,10 @@ dependencies:
   google_fonts:
   country_picker: ^2.0.27
   flutter_localization: ^0.3.2
+  line_chart: ^1.1.11
+  fl_chart: ^0.71.0
   curved_labeled_gradient_navigation_bar: ^2.0.13
-
+  http:
 
 dev_dependencies:
   flutter_test:

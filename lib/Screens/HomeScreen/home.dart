@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:zillow_rental/AddPropertyScreen/add_property+screen.dart';
+import 'package:zillow_rental/AppColors/app_colors.dart';
 import 'package:zillow_rental/Screens/Detail/screen/detail_screen.dart';
 import 'package:zillow_rental/Screens/TopLocationScreen/top_location_screen.dart';
 import '../AllCategoriesScreen/all_categories_screeen.dart';
@@ -60,6 +64,23 @@ class HomeScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      floatingActionButton: Container(
+        height: 50,
+        width: 130,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(14),
+          color: AppColors.blueAccentColor
+        ),
+        child: FloatingActionButton(
+            backgroundColor: AppColors.blueAccentColor,
+            onPressed: (){
+          Get.to(AddPropertyScreen());
+        },
+          child:
+
+              Text("Add Property",style: TextStyle(fontSize: 16,color: AppColors.whiteTheme,fontWeight: FontWeight.bold),)
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

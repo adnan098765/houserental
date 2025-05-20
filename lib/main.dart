@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'Auth/login_screen.dart';
 import 'Auth/signup_screen.dart';
 import 'Country/country_screen.dart';
+import 'Screens/TopLocationScreen/counter.dart';
 import 'SplashScreen/splash_screen.dart';
 import 'bottom_nav_screen.dart';
 
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home:  CountryScreen(),
+      home:  CounterScreen(),
+      // home:  CountryScreen(),
     );
   }
 }

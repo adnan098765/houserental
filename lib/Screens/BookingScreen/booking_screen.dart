@@ -21,7 +21,9 @@ class BookingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Booking"), backgroundColor: Colors.white),
+      appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: Text("Booking"), backgroundColor: Colors.white),
       body: ListView.builder(
         padding: EdgeInsets.all(12),
         itemCount: bookings.length,
